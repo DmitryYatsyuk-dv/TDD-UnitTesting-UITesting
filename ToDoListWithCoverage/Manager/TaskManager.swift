@@ -14,6 +14,7 @@ class TaskManager {
     var tasksCount: Int {
         tasks.count
     }
+    
     var doneTasksCount: Int {
         doneTasks.count
     }

@@ -8,13 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class TaskListViewController: UIViewController {
+    
+    //MARK: @IBOutlets
+    @IBOutlet var tableView: UITableView!
+    
+    @IBOutlet var dataProvider : DataProvider!
+    
+    //MARK: VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-
-
 }
+
 
