@@ -173,6 +173,9 @@
                                 <rect key="frame" x="127" y="428" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="save" destination="Ohd-9L-96i" eventType="touchUpInside" id="UU1-TY-y85"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X27-ev-Dul">
                                 <rect key="frame" x="217" y="428" width="60" height="60"/>
