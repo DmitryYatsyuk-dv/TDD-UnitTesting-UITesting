@@ -9,10 +9,14 @@
 import Foundation
 
 protocol URLSessionProtocol {
-    func dataTask(with url: URL) -> URLSessionDataTask
-    }
+    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+}
 
 extension URLSession: URLSessionProtocol {}
+
+enum NetworkError: Error {
+    case emptyData
+}
 
 class APIClient {
     lazy var urlSession: URLSessionProtocol = URLSession.shared
@@ -20,28 +24,33 @@ class APIClient {
     func login(withName name: String, password: String, completionHandler: @escaping (String?, Error?) -> Void) {
         
         let allowedCharacters = CharacterSet.urlQueryAllowed
-        /*
-         URLFragmentAllowedCharacterSet  "#%<>[\]^`{|}
-         URLHostAllowedCharacterSet      "#%/<>?@\^`{|}
-         URLPasswordAllowedCharacterSet  "#%/:<>?@[\]^`{|}
-         URLPathAllowedCharacterSet      "#%;<>?[\]^`{|}
-         URLQueryAllowedCharacterSet     "#%<>[\]^`{|}
-         URLUserAllowedCharacterSet      "#%/:<>?@[\]^`
-         */
+        
         guard
-            //For Example: -> let name = name.percentEncoded, etc.
             let name = name.addingPercentEncoding(withAllowedCharacters: allowedCharacters),
             let password = password.addingPercentEncoding(withAllowedCharacters: allowedCharacters) else {
                 fatalError()
         }
         
         let query = "name=\(name)&password=\(password)"
-        guard let url = URL(string: "https://todolistwithcoverage.com/login?\(query)") else {
+        guard let url = URL(string: "https://todoapp.com/login?\(query)") else {
             fatalError()
         }
         
-        urlSession.dataTask(with: url)
-        .resume()
+        urlSession.dataTask(with: url) { (data, response, error) in
+            do {
+                guard let data = data else {
+                    completionHandler(nil, NetworkError.emptyData )
+                    return
+                }
+                let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as! [String : String]
+                
+                let token = dictionary["token"]
+                completionHandler(token, nil)
+            } catch {
+                completionHandler(nil, error)
+
+            }
+        }.resume()
     }
 }
 
@@ -56,4 +65,11 @@ extension String {
         return encodedString
     }
 }
-*/
+ // Examples:
+        URLFragmentAllowedCharacterSet  "#%<>[\]^`{|}
+        URLHostAllowedCharacterSet      "#%/<>?@\^`{|}
+        URLPasswordAllowedCharacterSet  "#%/:<>?@[\]^`{|}
+        URLPathAllowedCharacterSet      "#%;<>?[\]^`{|}
+        URLQueryAllowedCharacterSet     "#%<>[\]^`{|}
+        URLUserAllowedCharacterSet      "#%/:<>?@[\]^`
+        */
