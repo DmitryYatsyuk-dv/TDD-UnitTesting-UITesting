@@ -29,6 +29,7 @@ class NewTaskViewController: UIViewController {
         let date = dateFormatter.date(from: dateTextField.text!)
         let descriptionString = descriptionTextField.text
         guard let addressString = addressTextField.text else { return }
+        
         geocoder.geocodeAddressString(addressString) { [unowned self] (placemarks, error) in
             let placemark = placemarks?.first
             let coordinate = placemark?.location?.coordinate
@@ -36,6 +37,9 @@ class NewTaskViewController: UIViewController {
             
             let task = Task(title: titleString, description: descriptionString, date: date, location: location)
             self.taskManager.add(task: task)
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
     }
 }
     

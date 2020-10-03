@@ -123,6 +123,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		32609DBC252894D70047D0F7 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				3292CF852502468500EC8E61 /* ToDoListWithCoverageTests.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		3287475D251CC03100475BC7 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +186,7 @@
 				3287475D251CC03100475BC7 /* View */,
 				324CF2B22509276000FB307A /* Controller */,
 				3292CFAB25026CB200EC8E61 /* Manager */,
-				3292CF852502468500EC8E61 /* ToDoListWithCoverageTests.swift */,
+				32609DBC252894D70047D0F7 /* SupportingFiles */,
 				3292CF872502468500EC8E61 /* Info.plist */,
 				3292CFA4250251C300EC8E61 /* Model */,
 			);

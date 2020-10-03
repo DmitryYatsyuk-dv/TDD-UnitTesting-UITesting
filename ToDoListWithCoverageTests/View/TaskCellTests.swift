@@ -14,6 +14,7 @@ class TaskCellTests: XCTestCase {
     var cell: TaskCell!
     
     override func setUpWithError() throws {
+        super.setUp()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(identifier: String(describing: TaskListViewController.self)) as! TaskListViewController
@@ -26,8 +27,7 @@ class TaskCellTests: XCTestCase {
         cell = tableView?.dequeueReusableCell(withIdentifier: String(describing: TaskCell.self), for: IndexPath(row: 0, section: 0)) as? TaskCell
     }
     
-    override func tearDownWithError() throws {
-    }
+    override func tearDownWithError() throws {}
     
     func testCellTitleLabel() {
         XCTAssertNotNil(cell.titleLabel)
