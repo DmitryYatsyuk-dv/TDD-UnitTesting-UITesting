@@ -32,7 +32,10 @@ class DataProviderTests: XCTestCase {
         tableView.delegate = sut
     }
     
-    override func tearDownWithError() throws {}
+    override func tearDownWithError() throws {
+        sut.taskManager?.removeAll()
+        super.tearDown()
+    }
     
     func testNumberOfSectionIsTwo() {
         
