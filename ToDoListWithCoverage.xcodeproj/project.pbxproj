@@ -172,9 +172,9 @@
 			children = (
 				328A594F252622FB00401005 /* Extensions */,
 				3292CFAE25026D6600EC8E61 /* Manager */,
+				3292CF9E250246DC00EC8E61 /* Controller */,
 				3292CFA0250246F700EC8E61 /* Model */,
 				3292CF9F250246F200EC8E61 /* View */,
-				3292CF9E250246DC00EC8E61 /* Controller */,
 				3292CFA12502471E00EC8E61 /* SupportingFiles */,
 			);
 			path = ToDoListWithCoverage;

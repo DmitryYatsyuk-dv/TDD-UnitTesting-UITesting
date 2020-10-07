@@ -32,7 +32,7 @@ class APIClient {
         }
         
         let query = "name=\(name)&password=\(password)"
-        guard let url = URL(string: "https://todoapp.com/login?\(query)") else {
+        guard let url = URL(string: "https://todolistwithcoverage.com/login?\(query)") else {
             fatalError()
         }
         
