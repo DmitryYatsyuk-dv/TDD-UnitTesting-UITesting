@@ -24,6 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    private func resetState() {
+        guard
+            let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
+            let url = URL(string: "\(documentPath)tasks.plist") else { return }
+        let fileManager = FileManager.default
+        try? fileManager.removeItem(at: url)
+    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

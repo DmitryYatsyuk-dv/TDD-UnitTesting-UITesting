@@ -13,7 +13,7 @@ class NewTaskViewController: UIViewController {
     
     var taskManager: TaskManager!
     var geocoder = CLGeocoder()
-
+    
     //MARK: IBOutlets
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var locationTextField: UITextField!
@@ -24,24 +24,21 @@ class NewTaskViewController: UIViewController {
     @IBOutlet var cancelButton: UIButton!
     
     @IBAction func save() {
-        guard let titleString = titleTextField.text else { return }
-        guard let locationString = locationTextField.text else { return }
+        let titleString = titleTextField.text
+        let locationString = locationTextField.text
         let date = dateFormatter.date(from: dateTextField.text!)
         let descriptionString = descriptionTextField.text
-        guard let addressString = addressTextField.text else { return }
+        let addressString = addressTextField.text
         
-        geocoder.geocodeAddressString(addressString) { [unowned self] (placemarks, error) in
+        geocoder.geocodeAddressString(addressString!) { [unowned self] (placemarks, error) in
             let placemark = placemarks?.first
             let coordinate = placemark?.location?.coordinate
-            let location = Location(name: locationString, coordinate: coordinate)
-            
-            let task = Task(title: titleString, description: descriptionString, date: date, location: location)
+            let location = Location(name: locationString!, coordinate: coordinate)
+            let task = Task(title: titleString!, description: descriptionString, date: date, location: location)
             self.taskManager.add(task: task)
-            DispatchQueue.main.async {
-                self.dismiss(animated: true, completion: nil)
-            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
-}
     
     var dateFormatter: DateFormatter {
         let df = DateFormatter()

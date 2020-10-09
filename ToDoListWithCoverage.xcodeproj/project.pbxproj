@@ -173,8 +173,8 @@
 				328A594F252622FB00401005 /* Extensions */,
 				3292CFAE25026D6600EC8E61 /* Manager */,
 				3292CF9E250246DC00EC8E61 /* Controller */,
-				3292CFA0250246F700EC8E61 /* Model */,
 				3292CF9F250246F200EC8E61 /* View */,
+				3292CFA0250246F700EC8E61 /* Model */,
 				3292CFA12502471E00EC8E61 /* SupportingFiles */,
 			);
 			path = ToDoListWithCoverage;
@@ -597,6 +597,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2V83UZ9AV3;
 				INFOPLIST_FILE = ToDoListWithCoverage/SupportingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -615,6 +616,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2V83UZ9AV3;
 				INFOPLIST_FILE = ToDoListWithCoverage/SupportingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -17,7 +17,6 @@ class DetailViewController: UIViewController {
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var mapView: MKMapView!
     
-    
     var task: Task!
     
     var dateFormatter: DateFormatter {
@@ -32,9 +31,7 @@ class DetailViewController: UIViewController {
         self.titleLabel.text = task.title
         self.descriptionLabel.text = task.description
         self.locationLabel.text = task.location?.name
-        self.dateLabel.text = DateFormatter.localizedString(from: task.date,
-                                                            dateStyle: .short,
-                                                            timeStyle: .none)
+        self.dateLabel.text = dateFormatter.string(from: task.date)
         
         if let coordinate = task.location?.coordinate {
             let region = MKCoordinateRegion(center: coordinate,
@@ -43,5 +40,4 @@ class DetailViewController: UIViewController {
             mapView.region = region
         }
     }
-    
 }

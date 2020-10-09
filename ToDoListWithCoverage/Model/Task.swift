@@ -13,6 +13,7 @@ struct Task {
     let description: String?
     let date: Date
     let location: Location?
+    var isDone = false
     
     var dict: [String : Any] {
         var dict: [String : Any] = [:]
@@ -29,7 +30,6 @@ struct Task {
          description: String? = nil,
          date: Date? = nil,
          location: Location? = nil) {
-        
         self.title = title
         self.description = description
         self.date = date ?? Date()

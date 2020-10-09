@@ -12,6 +12,7 @@ import CoreLocation
 struct Location {
     let name: String
     let coordinate: CLLocationCoordinate2D?
+    
     var dict: [String : Any] {
         var dict: [String : Any] = [:]
         dict["name"] = name
@@ -22,9 +23,7 @@ struct Location {
         return dict
     }
     
-    init(name: String,
-         coordinate: CLLocationCoordinate2D? = nil) {
-        
+    init(name: String, coordinate: CLLocationCoordinate2D? = nil) {
         self.name = name
         self.coordinate = coordinate
     }
@@ -45,14 +44,10 @@ extension Location {
 }
 
 extension Location: Equatable {
-    
     static func == (lhs: Location, rhs: Location) -> Bool {
-        guard
-            rhs.coordinate?.latitude == lhs.coordinate?.latitude
-                &&
-                lhs.coordinate?.longitude == rhs.coordinate?.longitude
-                &&
-                lhs.name == rhs.name else { return false }
+        guard rhs.coordinate?.latitude == lhs.coordinate?.latitude &&
+        lhs.coordinate?.longitude == rhs.coordinate?.longitude &&
+            lhs.name == rhs.name else { return false }
         return true
     }
 }

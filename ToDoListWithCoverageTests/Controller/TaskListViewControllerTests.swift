@@ -108,6 +108,7 @@ class TaskListViewControllerTests: XCTestCase {
     }
     
     func testSelectedCellNotificationsPushesDetailViewController() {
+        
      let mockNavigationController = MockNavigationController(rootViewController: sut)
         UIApplication.shared.keyWindow?.rootViewController = mockNavigationController
         
